@@ -11,11 +11,6 @@ import tensorflow as tf
 # 初始化变量和模型参数，定义训练闭环中的运算
 # ##################################################
 
-W = tf.Variable(tf.zeros([2, 1]), name="weights")
-b = tf.Variable(0., name="bias")
-# 创建一个 Saver 对象
-# saver = tf.train.Saver()
-
 
 def inference(X):
     # 计算推断模型在数据 X 上的输出，并将结果返回
@@ -49,7 +44,7 @@ with tf.Session() as sess:
         print("Close interactive session.")
         sess.close
 
-    tf.initialize_all_variables().run()
+    tf.global_variables_initializer().run()
 
     X, Y = inputs()
 
